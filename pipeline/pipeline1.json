@@ -99,16 +99,8 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobStorageReadSetting",
-										"recursive": false,
-										"wildcardFileName": "*.*",
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSetting"
-									}
+									"type": "BlobSource",
+									"recursive": true
 								},
 								"sink": {
 									"type": "DelimitedTextSink",
@@ -125,11 +117,12 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "CSVFileFromBlob",
+									"referenceName": "AzureBlob1",
 									"type": "DatasetReference",
 									"parameters": {
-										"itemPath": {
-											"value": "@{item().Path}",
+										"path": "/data/",
+										"name": {
+											"value": "@variables('currentBlob')",
 											"type": "Expression"
 										}
 									}
