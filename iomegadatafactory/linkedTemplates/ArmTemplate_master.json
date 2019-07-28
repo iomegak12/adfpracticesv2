@@ -23,6 +23,14 @@
 			"type": "string",
 			"defaultValue": "https://iomegastoragev4.dfs.core.windows.net"
 		},
+		"AzureBlob1_properties_typeProperties_fileName": {
+			"type": "string",
+			"defaultValue": "@dataset().name"
+		},
+		"AzureBlob1_properties_typeProperties_folderPath": {
+			"type": "string",
+			"defaultValue": "@dataset().path"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -61,6 +69,12 @@
 					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureBlob1_properties_typeProperties_fileName": {
+						"value": "[parameters('AzureBlob1_properties_typeProperties_fileName')]"
+					},
+					"AzureBlob1_properties_typeProperties_folderPath": {
+						"value": "[parameters('AzureBlob1_properties_typeProperties_folderPath')]"
 					}
 				}
 			},

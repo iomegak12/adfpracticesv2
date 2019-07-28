@@ -16,6 +16,12 @@
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://iomegastoragev4.dfs.core.windows.net"
+		},
+		"AzureBlob1_properties_typeProperties_fileName": {
+			"value": "@dataset().name"
+		},
+		"AzureBlob1_properties_typeProperties_folderPath": {
+			"value": "@dataset().path"
 		}
 	}
 }
