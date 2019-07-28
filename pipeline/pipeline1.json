@@ -110,6 +110,17 @@
 										"type": "DelimitedTextReadSetting"
 									}
 								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSetting"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSetting",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
@@ -119,6 +130,22 @@
 									"parameters": {
 										"itemPath": {
 											"value": "@{item().Path}",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "TargetDLSDataset",
+									"type": "DatasetReference",
+									"parameters": {
+										"folderPath": {
+											"value": "@variables('folderPath')",
+											"type": "Expression"
+										},
+										"blobName": {
+											"value": "@variables('currentBlob')",
 											"type": "Expression"
 										}
 									}
