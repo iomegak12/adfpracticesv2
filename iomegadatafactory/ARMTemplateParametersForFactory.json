@@ -4,6 +4,9 @@
 	"parameters": {
 		"factoryName": {
 			"value": "iomegadatafactory"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
 		}
 	}
 }
