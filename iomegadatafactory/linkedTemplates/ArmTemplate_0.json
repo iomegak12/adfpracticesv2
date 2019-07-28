@@ -26,7 +26,7 @@
 						"typeProperties": {
 							"variableName": "folderPath",
 							"value": {
-								"value": "@formatDateTime(utcnow(),'0:yyyy-MM-ddTHH:mm:ssZ')",
+								"value": "@formatDateTime(utcnow(),'Region1/Plant1/yyyy/MM/dd/HH/mm/1.csv')",
 								"type": "Expression"
 							}
 						}
