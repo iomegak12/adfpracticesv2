@@ -51,12 +51,79 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "currentBlob",
+								"variableName": "folderPath",
 								"value": {
-									"value": "@{item().Id}",
+									"value": "@concat('/region1/plant1/', formatDateTime(item().RecordDate, 'yyyy/MM/dd/HH/mm'))",
 									"type": "Expression"
 								}
 							}
+						},
+						{
+							"name": "Set Variable2",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set Variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "currentBlob",
+								"value": {
+									"value": "@{item().Name}",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Copy Data1",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Set Variable2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSetting",
+										"recursive": false,
+										"wildcardFileName": "*.*",
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSetting"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "CSVFileFromBlob",
+									"type": "DatasetReference",
+									"parameters": {
+										"itemPath": {
+											"value": "@{item().Path}",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
 					]
 				}
@@ -64,6 +131,9 @@
 		],
 		"variables": {
 			"currentBlob": {
+				"type": "String"
+			},
+			"folderPath": {
 				"type": "String"
 			}
 		},
