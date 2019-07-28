@@ -28,7 +28,7 @@
 						"type": "AzureBlobStorageReadSetting",
 						"recursive": true,
 						"modifiedDatetimeStart": "2019-07-21T00:00:00.000Z",
-						"modifiedDatetimeEnd": "2019-07-28T00:00:00.000Z"
+						"modifiedDatetimeEnd": "2019-07-29T00:00:00.000Z"
 					},
 					"formatSettings": {
 						"type": "DelimitedTextReadSetting"
