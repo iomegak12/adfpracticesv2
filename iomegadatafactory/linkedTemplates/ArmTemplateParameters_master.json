@@ -8,20 +8,20 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
-		"AzureSqlDatabase1_connectionString": {
-			"value": ""
-		},
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"value": "https://iomegastoragev4.dfs.core.windows.net"
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
 		},
 		"AzureBlob1_properties_typeProperties_fileName": {
 			"value": "@dataset().name"
 		},
 		"AzureBlob1_properties_typeProperties_folderPath": {
 			"value": "@dataset().path"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://iomegastoragev4.dfs.core.windows.net"
 		},
 		"containerUri": {
 			"value": ""
