@@ -42,7 +42,9 @@
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobStorageLocation"
+						"type": "AzureBlobStorageLocation",
+						"fileName": "*",
+						"container": "data"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
