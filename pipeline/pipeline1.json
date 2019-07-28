@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Stored Procedure1",
-				"type": "SqlServerStoredProcedure",
+				"name": "Lookup1",
+				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,11 +15,15 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[uspGetProcessableBlobs]"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[uspGetProcessableBlobs]"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -27,7 +31,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Stored Procedure1",
+						"activity": "Lookup1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -36,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Stored Procedure1').output",
+						"value": "@activity('Lookup1').output",
 						"type": "Expression"
 					},
 					"isSequential": true,
