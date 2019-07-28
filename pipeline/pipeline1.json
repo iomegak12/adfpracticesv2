@@ -1,0 +1,26 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set Variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "folderPath",
+					"value": {
+						"value": "@formatDateTime(utcnow(),'0:yyyy-MM-ddTHH:mm:ssZ')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"folderPath": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
